@@ -2,56 +2,68 @@ import styled from "styled-components/native";
 
 export const Container = styled.View`
   flex: 1;
+  padding: 50px 25px;
   background-color: #000;
-`;
+`
+
 
 export const Header = styled.View`
   flex-direction: row;
-  margin-top: 50px;
-  padding: 10px 20px;
-  background-color: #131418;
-  align-items: center;
   justify-content: space-between;
-  
-`;
+  margin-top: 5px;
+`
 
-export const HeaderLeft = styled.View`
+export const UserImage = styled.Image`
+  width: 45px;
+  height: 45px;
+  border-radius: 25px;
+`
+
+export const WelcomeMessage = styled.View`
+  margin-top: 40px;
+`
+export const Hello = styled.Text`
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #979b9f;
+`
+export const Tasks = styled.Text`
+  font-size: 32px;
+  font-weight: bold;
+  color: #f3f3f3;
+`
+
+export const Search = styled.TextInput.attrs({
+  placeholderTextColor: "#f3f3f3"
+})`
+  height: 50px;
+  background: #353537;
+  color: #f3f3f3;
+
+  padding: 0 20px;
+  margin-top: 40px;
+  border-radius: 8px;
+`
+
+export const TasksSection = styled.View`
+flex-direction: column;
+margin-top: 40px;
+`
+
+export const TasksTitle = styled.Text`
+  font-size: 32px;
+  font-weight: bold;
+  color: #f3f3f3;
+`
+
+export const TasksNav = styled.View`
   flex-direction: row;
-  align-items: center;
-`;
+  justify-content: space-around;
+`
 
-export const Title = styled.Text`
-  color: #fff;
-  font-size: 24px;
-  font-weight: 700;
-  font-family: Ubuntu_700Bold;
-`;
+export const NavTitle = styled.Text`
+  color: #f3f3f3;
 
-export const UserImg = styled.Image`
-  width: 42px;
-  height: 42px;
-  margin-left: 20px;
-`; 
+`
 
-export const Welcome = styled.View`
-  background-color: #131418;
-  padding: 30px 20px;
-  font-family: Ubuntu_700Bold;
-
-`;
-
-export const Message = styled.Text`
-  color: #fff;
-  font-size: 38px;
-  font-weight: 700;
-`;
-
-export const Wrapper = styled.View`
-  flex-direction: row;
-  align-items: center;
-`;
-
-export const Hand = styled.Image`
-  width: 64px;
-  height: 64px;
-`;
+export const TasksCard = styled.View``

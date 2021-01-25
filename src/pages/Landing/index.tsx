@@ -1,28 +1,35 @@
 import React from 'react';
 import { Feather } from "@expo/vector-icons";
 
-import { Container, Title, Header, UserImg, HeaderLeft, Welcome, Message, Wrapper, Hand } from './styles';
+import { Container, Header, UserImage, WelcomeMessage, Hello, Tasks, Search, TasksSection, TasksTitle, TasksNav, NavTitle, TasksCard } from './styles';
 
-import userImg from "../../assets/user.png";
-import handIcon from "../../assets/hand.png";
+import userImg from "../../assets/user.png"
 
 const Landing: React.FC = () => {
   return (
     <Container>
       <Header>
-        <Title>Dashboard</Title>
-        <HeaderLeft>
-          <Feather name="message-circle" size={32} color="#fff" />
-          <UserImg source={userImg} resizeMode="contain" />          
-        </HeaderLeft>
+        <UserImage source={userImg} />
+        <Feather name="menu" size={38} color="#f3f3f3" />
       </Header>
-      <Welcome>
-        <Message>Hello, </Message>
-        <Wrapper>
-          <Message>Diogo Martins</Message>
-          <Hand source={handIcon} resizeMode="contain" />
-        </Wrapper>
-      </Welcome>
+
+      <WelcomeMessage>
+        <Hello>Hello, Marry!</Hello>
+        <Tasks>You've got</Tasks>
+        <Tasks>8 Tasks today!</Tasks>
+      </WelcomeMessage>
+
+      <Search placeholder="Search your tasks..." />
+
+      <TasksSection>
+        <TasksTitle>My Tasks</TasksTitle>
+        <TasksNav>
+          <NavTitle>Recently</NavTitle>
+          <NavTitle>Today</NavTitle>
+          <NavTitle>Upcoming</NavTitle>
+        </TasksNav>
+        <TasksCard></TasksCard>
+      </TasksSection>
     </Container>
   );
 };
