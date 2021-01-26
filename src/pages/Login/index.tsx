@@ -1,6 +1,7 @@
 import React from 'react'
+import { auth } from '../../services/firebase'
 
-import { Container, Form, FormInput, FormTitle, Slogan, FormButton, ButtonText } from './styles'
+import { Container, Form, FormInput, FormTitle, Slogan, FormButton, ButtonText, FormRegistButton } from './styles'
 
 const Login: React.FC = () => {
   return (
@@ -17,6 +18,9 @@ const Login: React.FC = () => {
         <FormButton>
           <ButtonText>Login</ButtonText>
         </FormButton>
+        <FormRegistButton>
+          <ButtonText>Register</ButtonText>
+        </FormRegistButton>
       </Form>
     </Container>
   )

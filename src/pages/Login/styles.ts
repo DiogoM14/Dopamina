@@ -70,7 +70,7 @@ export const DateText = styled.Text`
 
 export const FormButton = styled(RectButton)`
   width: 50%;
-  height: 60px;
+  height: 50px;
   background: #c28ffb;
 
   padding: 0 20px;
@@ -82,6 +82,23 @@ export const FormButton = styled(RectButton)`
   justify-content: center;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
 `
+
+export const FormRegistButton = styled(RectButton)`
+  width: 50%;
+  height: 50px;
+  background: #1e1e1e;
+
+  padding: 0 20px;
+  margin-top: 20px;
+  border-radius: 12px;
+  margin: auto;
+  margin-top: 20px;
+
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
+`
+
 
 export const ButtonText = styled.Text`
   font-size: 24px;
