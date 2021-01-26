@@ -8,7 +8,9 @@ export const Container = styled.SafeAreaView`
   background-color: #111111;
 `
 
-export const Wrapper = styled.ScrollView``
+export const Wrapper = styled.ScrollView`
+  background-color: #111111;
+`
 
 export const Header = styled.View`
   flex-direction: row;
