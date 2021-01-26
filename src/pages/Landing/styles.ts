@@ -1,10 +1,14 @@
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 
-export const Container = styled.View`
+import { RectButton } from 'react-native-gesture-handler'
+
+export const Container = styled.SafeAreaView`
   flex: 1;
-  padding: 50px 25px;
-  background-color: #000;
+  padding: 0 25px;
+  background-color: #111111 ;
 `
+
+export const Wrapper = styled.ScrollView``
 
 
 export const Header = styled.View`
@@ -25,24 +29,65 @@ export const WelcomeMessage = styled.View`
 export const Hello = styled.Text`
   font-size: 22px;
   margin-bottom: 20px;
-  color: #979b9f;
+  color: #8d8d8d;
 `
 export const Tasks = styled.Text`
   font-size: 32px;
   font-weight: bold;
-  color: #f3f3f3;
+  color: #e1e1e1;
 `
 
 export const Search = styled.TextInput.attrs({
-  placeholderTextColor: "#f3f3f3"
+  placeholderTextColor: "#e1e1e1"
 })`
   height: 50px;
-  background: #353537;
-  color: #f3f3f3;
+  background: #1e1e1e;
+  color: #e1e1e1;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
 
   padding: 0 20px;
   margin-top: 40px;
-  border-radius: 8px;
+  border-radius: 12px;
+`
+
+export const ProgressContainer = styled(RectButton)`
+  flex-direction: row;
+  width: 100%;
+  height: 90px;
+  background: #1e1e1e;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: 12px;
+  padding: 20px 20px;
+  margin-top: 40px;
+`
+
+export const Card = styled.View`
+  flex-direction: column;
+  justify-content: space-between;
+`
+
+export const TextTop = styled.Text`
+  color: #e1e1e1;
+  font-size: 22px;
+  font-weight: bold;
+`
+
+export const TextBottom = styled.Text`
+  color: #8d8d8d;
+  font-size: 18px;
+`
+
+export const CardButton = styled.View`
+  width: 40px;
+  height: 40px;
+  background-color: #c28ffb;
+  border-radius: 12px;
+
+  justify-content: center;
+  align-items: center;
 `
 
 export const TasksSection = styled.View`
@@ -53,17 +98,25 @@ margin-top: 40px;
 export const TasksTitle = styled.Text`
   font-size: 32px;
   font-weight: bold;
-  color: #f3f3f3;
+
+  margin-bottom: 20px;
+  color: #e1e1e1;
 `
 
 export const TasksNav = styled.View`
   flex-direction: row;
-  justify-content: space-around;
+  /* justify-content: space-around; */
 `
 
-export const NavTitle = styled.Text`
-  color: #f3f3f3;
+export const CardRecentlySection = styled.ScrollView``
+
+export const TasksCard = styled.View`
+  width: 140px;
+  height: 200px;
+  background: #1e1e1e;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
+
+  border-radius: 12px;
+  margin: 20px 10px;
 
 `
-
-export const TasksCard = styled.View``
