@@ -2,31 +2,37 @@ import React from 'react';
 import { Feather } from "@expo/vector-icons";
 import Constants from 'expo-constants';
 
-import { Container, Wrapper, Header, UserImage, WelcomeMessage, Hello, Tasks, Search, TasksSection, TasksTitle, TasksNav, ProgressContainer, Card, TextTop, TextBottom, CardButton, CardRecentlySection } from './styles';
+
+import { Container, Wrapper, Header, UserImage, Menu, WelcomeMessage, Hello, WelcomeImage, Tasks, Search, TasksSection, TasksTitle, TasksNav, ProgressContainer, Card, TextTop, TextBottom, CardButton, CardRecentlySection } from './styles';
 
 import SelectTasksButton from '../../components/SelectTasksButton'
 import TaskCard from '../../components/TasksCard'
 
 import userImg from "../../assets/user.png"
-
-// interface ButtonProps {
-//   flag: boolean
-// }
+import welcomeimg from "../../assets/hand.png"
 
 const Landing: React.FC = () => {
   return (
     <Container>
       <Wrapper 
       showsVerticalScrollIndicator={false} 
-      style={{marginTop: Constants.statusBarHeight}}
+      style={{marginTop: Constants.statusBarHeight + 10}}
       >
       <Header>
         <UserImage source={userImg} />
-        <Feather name="menu" size={38} color="#f3f3f3" />
+        <Menu>
+          <Feather name="star" size={24} color="#e1e1e1" />
+          <Feather name="bar-chart" size={24} color="#e1e1e1" style={{marginLeft: 15}} />
+          <Feather name="bell" size={24} color="#e1e1e1" style={{marginLeft: 15}} />
+        </Menu>
       </Header>
 
       <WelcomeMessage>  
-        <Hello>Hello, Marry!</Hello>
+        <Hello>Hello, Marry!
+
+        <WelcomeImage source={welcomeimg} />
+
+        </Hello>
         <Tasks>You've got</Tasks>
         <Tasks>8 Tasks today!</Tasks>
       </WelcomeMessage>
@@ -53,9 +59,23 @@ const Landing: React.FC = () => {
         <CardRecentlySection horizontal={true}>
           <TaskCard  
             cardTitle="Home Tasks"
-            cardDescription="My weekly Home Tasks"
+            cardDescription="My weekly Home Tasks."
             progressInt={35}
             progressPerc={0.35}
+          />
+
+          <TaskCard  
+            cardTitle="School Homework"
+            cardDescription="School Homework for this week."
+            progressInt={72}
+            progressPerc={0.72}
+          />
+
+          <TaskCard  
+            cardTitle="Travel to-do"
+            cardDescription="To prepare my suitcase for the trip."
+            progressInt={10}
+            progressPerc={0.1}
           />
         </CardRecentlySection>
       </TasksSection>

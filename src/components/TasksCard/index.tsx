@@ -8,7 +8,6 @@ interface CardProps {
   cardDescription: string
   progressPerc: number
   progressInt: number
-
 }
 
 const TasksCard: React.FC<CardProps> = ({ cardTitle, cardDescription, progressPerc, progressInt}) => {
@@ -17,7 +16,7 @@ const TasksCard: React.FC<CardProps> = ({ cardTitle, cardDescription, progressPe
       <Card>
         <CardTexts>
           <CardTitle>{cardTitle}</CardTitle>
-          <CardDescription>{cardDescription}</CardDescription>
+          <CardDescription>{cardDescription}</CardDescription> 
         </CardTexts>
 
         <ProgressBar>

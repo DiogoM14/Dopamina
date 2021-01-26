@@ -4,15 +4,15 @@ import { RectButton } from 'react-native-gesture-handler'
 
 export const Container = styled.SafeAreaView`
   flex: 1;
-  padding: 0 25px;
-  background-color: #111111 ;
+  padding: 0 16px;
+  background-color: #111111;
 `
 
 export const Wrapper = styled.ScrollView``
 
-
 export const Header = styled.View`
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   margin-top: 5px;
 `
@@ -21,6 +21,10 @@ export const UserImage = styled.Image`
   width: 45px;
   height: 45px;
   border-radius: 25px;
+`
+
+export const Menu = styled(RectButton)`
+  flex-direction: row;
 `
 
 export const WelcomeMessage = styled.View`
@@ -35,6 +39,11 @@ export const Tasks = styled.Text`
   font-size: 32px;
   font-weight: bold;
   color: #e1e1e1;
+`
+
+export const WelcomeImage = styled.Image`
+  width: 42px;
+  height: 42px;
 `
 
 export const Search = styled.TextInput.attrs({
@@ -105,10 +114,9 @@ export const TasksTitle = styled.Text`
 
 export const TasksNav = styled.View`
   flex-direction: row;
-  /* justify-content: space-around; */
+  justify-content: space-around;
 `
 
 export const CardRecentlySection = styled.ScrollView``
 
-export const TasksCard = styled.View`
-`
+export const TasksCard = styled.View``
