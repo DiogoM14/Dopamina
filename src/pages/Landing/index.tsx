@@ -1,8 +1,8 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import { Feather } from "@expo/vector-icons";
 import Constants from 'expo-constants';
 
-import { Container, Wrapper, Header, UserImage, WelcomeMessage, Hello, Tasks, Search, TasksSection, TasksTitle, TasksNav, NavTitle, TasksCard, ProgressContainer, Card, TextTop, TextBottom, CardButton, CardRecentlySection } from './styles';
+import { Container, Wrapper, Header, UserImage, WelcomeMessage, Hello, Tasks, Search, TasksSection, TasksTitle, TasksNav, ProgressContainer, Card, TextTop, TextBottom, CardButton, CardRecentlySection } from './styles';
 
 import SelectTasksButton from '../../components/SelectTasksButton'
 import TaskCard from '../../components/TasksCard'
@@ -16,7 +16,10 @@ import userImg from "../../assets/user.png"
 const Landing: React.FC = () => {
   return (
     <Container>
-      <Wrapper style={{marginTop: Constants.statusBarHeight}} >
+      <Wrapper 
+      showsVerticalScrollIndicator={false} 
+      style={{marginTop: Constants.statusBarHeight}}
+      >
       <Header>
         <UserImage source={userImg} />
         <Feather name="menu" size={38} color="#f3f3f3" />
@@ -32,7 +35,7 @@ const Landing: React.FC = () => {
 
       <ProgressContainer>
         <Card>
-          <TextTop>Project Timeline</TextTop>
+          <TextTop>Projects Timeline</TextTop>
           <TextBottom>You can track Dopamina</TextBottom>
         </Card>
         <CardButton>
@@ -48,10 +51,12 @@ const Landing: React.FC = () => {
           <SelectTasksButton text="Upcoming" />
         </TasksNav>
         <CardRecentlySection horizontal={true}>
-          <TaskCard />
-          <TaskCard />
-          <TaskCard />
-          <TaskCard />
+          <TaskCard  
+            cardTitle="Home Tasks"
+            cardDescription="My weekly Home Tasks"
+            progressInt={35}
+            progressPerc={0.35}
+          />
         </CardRecentlySection>
       </TasksSection>
       </Wrapper>
