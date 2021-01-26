@@ -5,6 +5,7 @@ import Constants from 'expo-constants';
 import { Container, Wrapper, Header, UserImage, WelcomeMessage, Hello, Tasks, Search, TasksSection, TasksTitle, TasksNav, NavTitle, TasksCard, ProgressContainer, Card, TextTop, TextBottom, CardButton, CardRecentlySection } from './styles';
 
 import SelectTasksButton from '../../components/SelectTasksButton'
+import TaskCard from '../../components/TasksCard'
 
 import userImg from "../../assets/user.png"
 
@@ -46,13 +47,11 @@ const Landing: React.FC = () => {
           <SelectTasksButton text="Today" />
           <SelectTasksButton text="Upcoming" />
         </TasksNav>
-        <CardRecentlySection horizontal={true} >
-          <TasksCard></TasksCard>
-          <TasksCard></TasksCard>
-          <TasksCard></TasksCard>
-          <TasksCard></TasksCard>
-          <TasksCard></TasksCard>
-          <TasksCard></TasksCard>
+        <CardRecentlySection horizontal={true}>
+          <TaskCard />
+          <TaskCard />
+          <TaskCard />
+          <TaskCard />
         </CardRecentlySection>
       </TasksSection>
       </Wrapper>

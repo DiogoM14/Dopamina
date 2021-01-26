@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 
 import { Container, NavTitle, NavButton } from './styles';
 
@@ -9,9 +9,10 @@ interface ButtonTextProps {
 const SelectTasksButton: React.FC<ButtonTextProps> = ({ text }) => {
   const [isFlaged, setIsFlaged] = useState(false)
 
-  const handleButtonFlag = useCallback(() => {
-    setIsFlaged(true)
-  }, [])
+  const handleButtonFlag = () => {
+    isFlaged && setIsFlaged(false)
+    !isFlaged && setIsFlaged(true)
+  }
 
   return (
     <Container>
