@@ -15,13 +15,14 @@ const Landing: React.FC = () => {
   return (
     <Container>
       <Wrapper 
-      showsVerticalScrollIndicator={false} 
-      style={{marginTop: Constants.statusBarHeight + 10}}
+        showsVerticalScrollIndicator={false} 
+        style={{marginTop: Constants.statusBarHeight + 10}}
       >
       <Header>
         <UserImage source={userImg} />
         <Menu>
-          <Feather name="star" size={24} color="#e1e1e1" />
+          <Feather name="plus-circle" size={24} color="#e1e1e1" />
+          <Feather name="star" size={24} color="#e1e1e1" style={{marginLeft: 15}} />
           <Feather name="bar-chart" size={24} color="#e1e1e1" style={{marginLeft: 15}} />
           <Feather name="bell" size={24} color="#e1e1e1" style={{marginLeft: 15}} />
         </Menu>
@@ -29,9 +30,7 @@ const Landing: React.FC = () => {
 
       <WelcomeMessage>  
         <Hello>Hello, Marry!
-
-        <WelcomeImage source={welcomeimg} />
-
+          <WelcomeImage source={welcomeimg} />
         </Hello>
         <Tasks>You've got</Tasks>
         <Tasks>8 Tasks today!</Tasks>
@@ -56,7 +55,10 @@ const Landing: React.FC = () => {
           <SelectTasksButton text="Today" />
           <SelectTasksButton text="Upcoming" />
         </TasksNav>
-        <CardRecentlySection horizontal={true}>
+        <CardRecentlySection 
+          horizontal={true}
+          showsHorizontalScrollIndicator={false} 
+          >
           <TaskCard  
             cardTitle="Home Tasks"
             cardDescription="My weekly Home Tasks."
