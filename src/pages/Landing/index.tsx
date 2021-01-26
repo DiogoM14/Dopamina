@@ -1,9 +1,10 @@
-import React from 'react';
-import { Feather } from "@expo/vector-icons";
-import Constants from 'expo-constants';
+import React from 'react'
+import { Feather } from "@expo/vector-icons"
+import { useNavigation } from '@react-navigation/native'
+import Constants from 'expo-constants'
 
 
-import { Container, Wrapper, Header, UserImage, Menu, WelcomeMessage, Hello, WelcomeImage, Tasks, Search, TasksSection, TasksTitle, TasksNav, ProgressContainer, Card, TextTop, TextBottom, CardButton, CardRecentlySection } from './styles';
+import { Container, Wrapper, Header, UserImage, Menu, WelcomeMessage, Hello, WelcomeImage, Tasks, Search, TasksSection, TasksTitle, TasksNav, ProgressContainer, Card, TextTop, TextBottom, CardButton, CardRecentlySection } from './styles'
 
 import SelectTasksButton from '../../components/SelectTasksButton'
 import TaskCard from '../../components/TasksCard'
@@ -12,6 +13,12 @@ import userImg from "../../assets/user.png"
 import welcomeimg from "../../assets/hand.png"
 
 const Landing: React.FC = () => {
+  const navigation = useNavigation()
+
+  function handleNavigateToAddTodo() {
+    navigation.navigate('AddTodo')
+  }
+
   return (
     <Container>
       <Wrapper 
@@ -21,7 +28,7 @@ const Landing: React.FC = () => {
       <Header>
         <UserImage source={userImg} />
         <Menu>
-          <Feather name="plus-circle" size={24} color="#e1e1e1" />
+          <Feather onPress={handleNavigateToAddTodo} name="plus-circle" size={24} color="#e1e1e1" />
           <Feather name="star" size={24} color="#e1e1e1" style={{marginLeft: 15}} />
           <Feather name="bar-chart" size={24} color="#e1e1e1" style={{marginLeft: 15}} />
           <Feather name="bell" size={24} color="#e1e1e1" style={{marginLeft: 15}} />
@@ -83,7 +90,7 @@ const Landing: React.FC = () => {
       </TasksSection>
       </Wrapper>
     </Container>
-  );
-};
+  )
+}
 
 export default Landing;
