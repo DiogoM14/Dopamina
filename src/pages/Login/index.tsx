@@ -1,15 +1,22 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { auth } from '../../services/firebase'
 
-import { Container, Form, FormInput, FormTitle, Slogan, FormButton, ButtonText, FormRegistButton } from './styles'
+import { Container, Form, FormInput, FormTitle, Slogan, RegisterContainer, RegisterTitle, RegisterMessage, RegisterLink, FormButton, ButtonText, FormRegistButton } from './styles'
 
 const Login: React.FC = () => {
+  const navigation = useNavigation()
+
+  function handleNavigateToRegister() {
+    navigation.navigate('Register')
+  }
   return (
     <Container>
-        <FormTitle>
-          <Slogan>Turn on your</Slogan>
-          <Slogan style={{color: '#c28ffb'}}>Dopamina</Slogan>
-        </FormTitle>
+      <FormTitle>
+        <Slogan style={{color: '#c28ffb'}}>Hey,</Slogan>
+        <Slogan>Login Now.</Slogan>
+      </FormTitle>
+
+      <RegisterTitle>Turn on your Dopamina </RegisterTitle>
 
       <Form>
         <FormInput placeholder="E-mail" />
@@ -18,10 +25,12 @@ const Login: React.FC = () => {
         <FormButton>
           <ButtonText>Login</ButtonText>
         </FormButton>
-        <FormRegistButton>
-          <ButtonText>Register</ButtonText>
-        </FormRegistButton>
       </Form>
+
+      <RegisterContainer>
+        <RegisterMessage>If you are new / </RegisterMessage>
+        <RegisterLink onPress={handleNavigateToRegister}>Create your account</RegisterLink>
+      </RegisterContainer>
     </Container>
   )
 }

@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import Login from '../../pages/Login'
+import Register from '../../pages/Register'
 import Landing from '../../pages/Landing'
 import AddTodo from '../../pages/AddTodo'
 
@@ -17,6 +18,17 @@ const AppStack: React.FC = () => {
           component={Login}
           options={{
             headerShown: false
+          }}
+        />
+        <Screen 
+          name="Register" 
+          component={Register}
+          options={{
+            title: "",
+            headerStyle: {
+              backgroundColor: '#111111',
+            },
+            headerTintColor: '#e1e1e1'
           }}
         />
         <Screen 
