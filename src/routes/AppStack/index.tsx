@@ -12,7 +12,9 @@ const { Navigator, Screen } = createStackNavigator();
 const AppStack: React.FC = () => {
   return (
     <NavigationContainer>
-      <Navigator>
+      <Navigator
+        // initialRouteName="Landing"
+      >
         <Screen 
           name="Login" 
           component={Login}

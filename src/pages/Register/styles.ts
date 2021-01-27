@@ -1,7 +1,7 @@
 import { RectButton } from "react-native-gesture-handler";
 import styled from "styled-components/native";
 
-export const Container = styled.SafeAreaView`
+export const Container = styled.KeyboardAvoidingView`
   flex: 1;
   padding: 50px 16px;
   background-color: #111111;
@@ -47,6 +47,7 @@ export const FormInput = styled.TextInput.attrs({
   width: 100%;
   height: 50px;
   background: #1e1e1e;
+  color: #e1e1e1;
 
   padding: 0 20px;
   border-radius: 12px;

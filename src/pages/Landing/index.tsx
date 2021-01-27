@@ -1,15 +1,14 @@
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
 import { Feather } from "@expo/vector-icons"
 import { useNavigation } from '@react-navigation/native'
 import Constants from 'expo-constants'
-
+import { auth, db } from '../../services/firebase'
 
 import { Container, Wrapper, Header, UserImage, Menu, WelcomeMessage, Hello, WelcomeImage, Tasks, Search, TasksSection, TasksTitle, TasksNav, ProgressContainer, Card, TextTop, TextBottom, CardButton, CardRecentlySection } from './styles'
 
 import SelectTasksButton from '../../components/SelectTasksButton'
 import TaskCard from '../../components/TasksCard'
 
-import userImg from "../../assets/user.png"
 import welcomeimg from "../../assets/hand.png"
 
 const Landing: React.FC = () => {
@@ -26,7 +25,7 @@ const Landing: React.FC = () => {
         style={{marginTop: Constants.statusBarHeight + 10}}
       >
       <Header>
-        <UserImage source={userImg} />
+        <UserImage source={{ uri: auth?.currentUser?.photoURL }} />
         <Menu>
           <Feather onPress={handleNavigateToAddTodo} name="plus-circle" size={24} color="#e1e1e1" />
           <Feather name="star" size={24} color="#e1e1e1" style={{marginLeft: 15}} />

@@ -1,7 +1,7 @@
 import { RectButton } from "react-native-gesture-handler";
 import styled from "styled-components/native";
 
-export const Container = styled.SafeAreaView`
+export const Container = styled.KeyboardAvoidingView`
   flex: 1;
   padding: 200px 16px;
   background-color: #111111;
