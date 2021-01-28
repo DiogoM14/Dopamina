@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { auth } from '../../services/firebase';
 
-import { Container, Form, FormInput, FormTitle, Slogan, RegisterContainer, RegisterMessage, RegisterLink, FormButton, ButtonText, FormRegistButton } from './styles'
+import { Container, Form, FormInput, FormTitle, Slogan, FormButton, ButtonText } from './styles'
 
 const Register: React.FC = () => {
   const [name, setName] = useState("")

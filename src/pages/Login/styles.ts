@@ -30,7 +30,7 @@ export const RegisterContainer = styled.View`
   width: 100%;
   justify-content: center;
 
-  margin-top: 20px;
+  margin-bottom: 20px;
 `
 
 export const RegisterMessage = styled.Text`

@@ -1,11 +1,10 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import { auth } from '../../services/firebase'
 
-import { Container, Form, FormInput, FormTitle, Slogan, RegisterContainer, RegisterTitle, RegisterMessage, RegisterLink, FormButton, ButtonText, FormRegistButton } from './styles'
+import { Container, Form, FormInput, FormTitle, Slogan, RegisterContainer, RegisterTitle, RegisterMessage, RegisterLink, FormButton, ButtonText } from './styles'
 
-const Login: React.FC = () => {
+const Login: React.FC = ({ navigation }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -21,8 +20,6 @@ const Login: React.FC = () => {
   }, [])
 
   const signIn = () => {}
-
-  const navigation = useNavigation()
 
   function handleNavigateToRegister() {
     navigation.navigate('Register')

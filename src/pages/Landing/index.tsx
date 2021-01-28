@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react'
+import React from 'react'
 import { Feather } from "@expo/vector-icons"
 import { useNavigation } from '@react-navigation/native'
 import Constants from 'expo-constants'
@@ -18,6 +18,10 @@ const Landing: React.FC = () => {
     navigation.navigate('AddTodo')
   }
 
+  function handleNavigateToLogin() {
+    navigation.navigate('Login')
+  }
+
   return (
     <Container>
       <Wrapper 
@@ -30,12 +34,12 @@ const Landing: React.FC = () => {
           <Feather onPress={handleNavigateToAddTodo} name="plus-circle" size={24} color="#e1e1e1" />
           <Feather name="star" size={24} color="#e1e1e1" style={{marginLeft: 15}} />
           <Feather name="bar-chart" size={24} color="#e1e1e1" style={{marginLeft: 15}} />
-          <Feather name="bell" size={24} color="#e1e1e1" style={{marginLeft: 15}} />
+          <Feather onPress={handleNavigateToLogin} name="bell" size={24} color="#e1e1e1" style={{marginLeft: 15}} />
         </Menu>
       </Header>
 
       <WelcomeMessage>  
-        <Hello>Hello, Marry!
+        <Hello>Hello, { auth?.currentUser?.displayName }!
           <WelcomeImage source={welcomeimg} />
         </Hello>
         <Tasks>You've got</Tasks>
