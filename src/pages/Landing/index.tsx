@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Feather } from "@expo/vector-icons"
 import { useNavigation } from '@react-navigation/native'
 import Constants from 'expo-constants'
@@ -11,16 +11,29 @@ import TaskCard from '../../components/TasksCard'
 
 import welcomeimg from "../../assets/hand.png"
 
-const Landing: React.FC = () => {
-  const navigation = useNavigation()
+const Landing: React.FC = ({ navigation }) => {
+  const [todoCard, setTodoCard] = useState([])
 
   function handleNavigateToAddTodo() {
     navigation.navigate('AddTodo')
   }
 
-  function handleNavigateToLogin() {
-    navigation.navigate('Login')
+  const signOutUser = () => {
+    auth.signOut().then(() => {
+      navigation.replace('Login')
+    })
   }
+
+  useEffect(() => {
+    const unsubscribe = db.collection('todoCard').onSnapshot(snapshot => (
+      setTodoCard(snapshot.docs.map(doc => ({
+        id: doc.id,
+        data: doc.data(),
+      })))
+    ))
+
+    return unsubscribe
+  }, [])
 
   return (
     <Container>
@@ -32,9 +45,9 @@ const Landing: React.FC = () => {
         <UserImage source={{ uri: auth?.currentUser?.photoURL }} />
         <Menu>
           <Feather onPress={handleNavigateToAddTodo} name="plus-circle" size={24} color="#e1e1e1" />
-          <Feather name="star" size={24} color="#e1e1e1" style={{marginLeft: 15}} />
+          <Feather name="bell" size={24} color="#e1e1e1" style={{marginLeft: 15}} />
           <Feather name="bar-chart" size={24} color="#e1e1e1" style={{marginLeft: 15}} />
-          <Feather onPress={handleNavigateToLogin} name="bell" size={24} color="#e1e1e1" style={{marginLeft: 15}} />
+          <Feather onPress={signOutUser} name="log-out" size={24} color="#e1e1e1" style={{marginLeft: 15}} />
         </Menu>
       </Header>
 
@@ -69,26 +82,16 @@ const Landing: React.FC = () => {
           horizontal={true}
           showsHorizontalScrollIndicator={false} 
           >
-          <TaskCard  
-            cardTitle="Home Tasks"
-            cardDescription="My weekly Home Tasks."
-            progressInt={35}
-            progressPerc={0.35}
-          />
-
-          <TaskCard  
-            cardTitle="School Homework"
-            cardDescription="School Homework for this week."
-            progressInt={72}
-            progressPerc={0.72}
-          />
-
-          <TaskCard  
-            cardTitle="Travel to-do"
-            cardDescription="To prepare my suitcase for the trip."
-            progressInt={10}
-            progressPerc={0.1}
-          />
+            {todoCard.map(({ id, data: { cardName, cardDescription } }) => (
+              <TaskCard  
+                key={id}
+                cardTitle={cardName}
+                cardDescription={cardDescription}
+                progressInt={35}
+                progressPerc={0.35}
+              />
+            ))}
+          
         </CardRecentlySection>
       </TasksSection>
       </Wrapper>

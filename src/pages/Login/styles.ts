@@ -53,6 +53,7 @@ export const FormInput = styled.TextInput.attrs({
 })`
   width: 100%;
   height: 50px;
+  color: #e1e1e1;
   background: #1e1e1e;
 
   padding: 0 20px;

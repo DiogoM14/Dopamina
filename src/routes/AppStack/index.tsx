@@ -10,10 +10,30 @@ import AddTodo from '../../pages/AddTodo'
 const { Navigator, Screen } = createStackNavigator();
 
 const AppStack: React.FC = () => {
+  const navigatorOptions = {
+  headerShown: false,
+  cardStyle: { backgroundColor: '#111111' },
+  cardStyleInterpolator: ({ current: { progress } }) => ({
+    cardStyle: {
+      opacity: progress.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0, 1],
+      }),
+    },
+    overlayStyle: {
+      opacity: progress.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0, 0.5],
+        extrapolate: 'clamp',
+      }),
+    },
+  }),
+}
   return (
     <NavigationContainer>
-      <Navigator
-        // initialRouteName="Landing"
+      <Navigator 
+        screenOptions={navigatorOptions}
+        mode="modal"
       >
         <Screen 
           name="Login" 
@@ -28,7 +48,7 @@ const AppStack: React.FC = () => {
           options={{
             title: "",
             headerStyle: {
-              backgroundColor: '#111111',
+              backgroundColor: '#',
             },
             headerTintColor: '#e1e1e1'
           }}

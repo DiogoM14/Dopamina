@@ -7,10 +7,9 @@ import { Container, Form, FormInput, FormTitle, Slogan, RegisterContainer, Regis
 const Login: React.FC = ({ navigation }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-
+  
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
-      console.log(authUser)
       if(authUser) {
         navigation.replace('Landing')
       }
@@ -19,9 +18,12 @@ const Login: React.FC = ({ navigation }) => {
     return unsubscribe  // Cleanup function
   }, [])
 
-  const signIn = () => {}
+  const signIn = () => {
+    auth.signInWithEmailAndPassword(email, password)
+    .catch(err => alert(err))
+  }
 
-  function handleNavigateToRegister() {
+  const handleNavigateToRegister = () => {
     navigation.navigate('Register')
   }
   return (
@@ -46,6 +48,7 @@ const Login: React.FC = ({ navigation }) => {
           secureTextEntry
           value={password} 
           onChangeText={(text) => setPassword(text)} 
+          onSubmitEditing={signIn}
         />
         <FormButton>
           <ButtonText onPress={signIn}>Login</ButtonText>

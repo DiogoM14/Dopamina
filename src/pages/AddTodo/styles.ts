@@ -29,6 +29,7 @@ export const FormInput = styled.TextInput.attrs({
   width: 100%;
   height: 50px;
   background: #1e1e1e;
+  color: #e1e1e1;
 
   padding: 0 20px;
   border-radius: 12px;

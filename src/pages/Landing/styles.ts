@@ -25,7 +25,7 @@ export const UserImage = styled.Image`
   border-radius: 25px;
 `
 
-export const Menu = styled(RectButton)`
+export const Menu = styled.View`
   flex-direction: row;
 `
 

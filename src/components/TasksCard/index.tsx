@@ -4,15 +4,16 @@ import * as Progress from 'react-native-progress'
 import { Container, Card, CardTexts, CardTitle, CardDescription, ProgressBar, ProgressContainer, ProgressText, ProgressPerc } from './styles';
 
 interface CardProps {
+  id: string
   cardTitle: string
   cardDescription: string
   progressPerc: number
   progressInt: number
 }
 
-const TasksCard: React.FC<CardProps> = ({ cardTitle, cardDescription, progressPerc, progressInt}) => {
+const TasksCard: React.FC<CardProps> = ({ id, cardTitle, cardDescription, progressPerc, progressInt}) => {
   return (
-    <Container>
+    <Container key={id}>
       <Card>
         <CardTexts>
           <CardTitle>{cardTitle}</CardTitle>
