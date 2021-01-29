@@ -6,12 +6,12 @@ import Login from '../../pages/Login'
 import Register from '../../pages/Register'
 import Landing from '../../pages/Landing'
 import AddTodo from '../../pages/AddTodo'
+import TodoCard from '../../pages/TodoCard'
 
 const { Navigator, Screen } = createStackNavigator();
 
 const AppStack: React.FC = () => {
   const navigatorOptions = {
-  headerShown: false,
   cardStyle: { backgroundColor: '#111111' },
   cardStyleInterpolator: ({ current: { progress } }) => ({
     cardStyle: {
@@ -63,6 +63,17 @@ const AppStack: React.FC = () => {
         <Screen 
           name="AddTodo" 
           component={AddTodo}
+          options={{
+            title: "",
+            headerStyle: {
+              backgroundColor: '#111111',
+            },
+            headerTintColor: '#e1e1e1'
+          }}
+        />
+        <Screen 
+          name="TodoCard" 
+          component={TodoCard}
           options={{
             title: "",
             headerStyle: {

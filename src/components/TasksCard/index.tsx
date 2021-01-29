@@ -11,10 +11,10 @@ interface CardProps {
   progressInt: number
 }
 
-const TasksCard: React.FC<CardProps> = ({ id, cardTitle, cardDescription, progressPerc, progressInt}) => {
+const TasksCard: React.FC<CardProps> = ({ id, cardTitle, cardDescription, progressPerc, progressInt, enterTodoCard }) => {
   return (
-    <Container key={id}>
-      <Card>
+    <Container  key={id}>
+      <Card onPress={() => enterTodoCard(id, cardTitle)}>
         <CardTexts>
           <CardTitle>{cardTitle}</CardTitle>
           <CardDescription>{cardDescription}</CardDescription> 

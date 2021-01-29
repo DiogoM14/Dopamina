@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Feather } from "@expo/vector-icons"
-import { useNavigation } from '@react-navigation/native'
 import Constants from 'expo-constants'
 import { auth, db } from '../../services/firebase'
 
@@ -34,6 +33,13 @@ const Landing: React.FC = ({ navigation }) => {
 
     return unsubscribe
   }, [])
+
+  const enterTodoCard = (id, cardName) => {
+    navigation.navigate('TodoCard', { 
+      id,
+      cardName,
+    })
+  }
 
   return (
     <Container>
@@ -87,8 +93,9 @@ const Landing: React.FC = ({ navigation }) => {
                 key={id}
                 cardTitle={cardName}
                 cardDescription={cardDescription}
-                progressInt={35}
-                progressPerc={0.35}
+                progressInt={0}
+                progressPerc={0}
+                enterTodoCard={enterTodoCard}
               />
             ))}
           
