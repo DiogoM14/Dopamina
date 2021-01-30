@@ -77,6 +77,6 @@ export const FormButton = styled(RectButton)`
 export const ButtonText = styled.Text`
   font-size: 24px;
   font-weight: bold;
-  color: #e1e1e1;
+  color: #1e1e1e;
 `
 
