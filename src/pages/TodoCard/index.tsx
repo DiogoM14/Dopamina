@@ -1,11 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Text } from 'react-native'
+import { db } from '../../services/firebase';
 
 import { Feather } from "@expo/vector-icons"
 import { Container, Wrapper, Header, Tasks, Description, Title, Add, BottomInput, TaskInput } from './styles'
 import Task from '../../components/Task'
 
 const TodoCard: React.FC = ({ navigation, route }) => {
+  const [ taskInput, setTaskInput ] = useState("")
+
+  const createTask = async () => {
+    await db
+      .collection('tasks')
+      .add({ 
+        taskName: taskInput,
+      })
+      .catch((err) => alert(err))
+  }
+
   return (
     <Container>
       <Wrapper 
@@ -20,23 +32,18 @@ const TodoCard: React.FC = ({ navigation, route }) => {
         </Header>
         
         <Tasks>
-          <Task />
-          <Task />
-          <Task />
-          <Task />
-          <Task />
-          <Task />
-          <Task />
-          <Task />
-          <Task />
-          <Task />
+
         </Tasks>
       </Wrapper>
       
       
       <BottomInput>
-        <TaskInput placeholder="Your task..." />
-        <Add>
+        <TaskInput 
+          placeholder="Your task..." 
+          value={taskInput}
+          onChangeText={(text) => setTaskInput(text)}
+        />
+        <Add onPress={createTask}>
           <Feather name="plus" size={38} color="#1e1e1e" />
         </Add>
         </BottomInput>
