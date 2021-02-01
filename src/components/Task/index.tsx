@@ -3,14 +3,15 @@ import React, { useState } from 'react'
 import { Container, TaskCheckbox, TaskTitle } from './styles'
 
 interface TaskProps {
+  id: string
   taskName: string
 }
 
-const Task: React.FC<TaskProps> = ({ taskName }) => {
+const Task: React.FC<TaskProps> = ({ id, taskName }) => {
   const [ isSelected, setIsSelected ] = useState(false)
 
   return (
-    <Container>
+    <Container key={id}>
       <TaskCheckbox
         disabled={false}
         value={isSelected}

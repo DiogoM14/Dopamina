@@ -5,18 +5,31 @@ import { db } from '../../services/firebase';
 import { Feather } from "@expo/vector-icons"
 import { Container, Wrapper, Header, Tasks, Description, Title, Add, BottomInput, TaskInput } from './styles'
 import Task from '../../components/Task'
+import { FlatList } from 'react-native-gesture-handler';
 
 const TodoCard: React.FC = ({ navigation, route }) => {
-  const [ taskInput, setTaskInput ] = useState("")
+  const [ tasks, setTasks ] = useState([])
+  const [ tasksList, setTasksList ] = useState([])
 
   const createTask = async () => {
     await db
       .collection('tasks')
       .add({ 
-        taskName: taskInput,
+        taskName: tasks,
       })
       .catch((err) => alert(err))
   }
+
+  useEffect(() => {
+    const unsubscribe = db.collection('tasks').onSnapshot(snapshot => (
+      setTasksList(snapshot.docs.map(doc => ({
+        id: doc.id,
+        data: doc.data(),
+      })))
+    ))
+
+    return unsubscribe
+  }, [])
 
   return (
     <Container>
@@ -32,7 +45,13 @@ const TodoCard: React.FC = ({ navigation, route }) => {
         </Header>
         
         <Tasks>
-
+          {tasksList.map(({ id, data: { taskName } }) => (
+              <Task 
+                key={id}
+                taskName={taskName}
+              />
+              // <Text>{taskName}</Text>
+            ))}
         </Tasks>
       </Wrapper>
       
@@ -40,8 +59,8 @@ const TodoCard: React.FC = ({ navigation, route }) => {
       <BottomInput>
         <TaskInput 
           placeholder="Your task..." 
-          value={taskInput}
-          onChangeText={(text) => setTaskInput(text)}
+          value={tasks}
+          onChangeText={(text) => setTasks(text)}
         />
         <Add onPress={createTask}>
           <Feather name="plus" size={38} color="#1e1e1e" />
