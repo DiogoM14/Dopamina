@@ -11,14 +11,15 @@ const Task: React.FC<TaskProps> = ({ id, taskName }) => {
   const [ isSelected, setIsSelected ] = useState(false)
 
   return (
-    <Container key={id}>
+    <Container key={id} >
       <TaskCheckbox
         disabled={false}
         value={isSelected}
         onValueChange={(newValue) => setIsSelected(newValue)}
         tintColors={{ true: "#c28ffb", false: "#e1e1e1" }}
+        
       />
-      <TaskTitle>{taskName}</TaskTitle>
+      <TaskTitle style={{ textDecorationLine: isSelected ? 'line-through' : 'none', color: isSelected ? '#888' : '#e1e1e1' }}>{taskName}</TaskTitle>
     </Container>
   )
 }

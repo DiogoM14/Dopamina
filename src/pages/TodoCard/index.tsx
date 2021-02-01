@@ -1,35 +1,42 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { Text } from 'react-native'
-import { db } from '../../services/firebase';
+import { auth, db } from '../../services/firebase';
+import * as firebase from 'firebase'
 
 import { Feather } from "@expo/vector-icons"
 import { Container, Wrapper, Header, Tasks, Description, Title, Add, BottomInput, TaskInput } from './styles'
 import Task from '../../components/Task'
-import { FlatList } from 'react-native-gesture-handler';
 
 const TodoCard: React.FC = ({ navigation, route }) => {
-  const [ tasks, setTasks ] = useState([])
+  const [ tasks, setTasks ] = useState("")
   const [ tasksList, setTasksList ] = useState([])
 
-  const createTask = async () => {
-    await db
-      .collection('tasks')
-      .add({ 
+  const createTask = () => {
+     db.collection('todoCard').doc(route.params.id).collection('tasks').add({ 
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         taskName: tasks,
+        email: auth.currentUser.email,
       })
       .catch((err) => alert(err))
+
+      setTasks('')
   }
 
-  useEffect(() => {
-    const unsubscribe = db.collection('tasks').onSnapshot(snapshot => (
-      setTasksList(snapshot.docs.map(doc => ({
-        id: doc.id,
-        data: doc.data(),
-      })))
-    ))
-
+  useLayoutEffect(() => {
+    const unsubscribe = db
+      .collection('todoCard')
+      .doc(route.params.id)
+      .collection('tasks')
+      .orderBy('timestamp', 'desc')
+      .onSnapshot((snapshot) => 
+        setTasksList(snapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+       })))
+    )
+    console.log("consoleeeeee" + tasksList.data)
     return unsubscribe
-  }, [])
+  }, [route])
 
   return (
     <Container>
@@ -45,10 +52,11 @@ const TodoCard: React.FC = ({ navigation, route }) => {
         </Header>
         
         <Tasks>
-          {tasksList.map(({ id, data: { taskName } }) => (
+          {tasksList.map(({ id, data }) => (
+            
               <Task 
                 key={id}
-                taskName={taskName}
+                taskName={data.email}
               />
               // <Text>{taskName}</Text>
             ))}

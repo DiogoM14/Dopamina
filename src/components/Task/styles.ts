@@ -14,7 +14,8 @@ export const Container = styled.View`
   border-radius: 12px;
 `
 
-export const TaskCheckbox = styled(CheckBox)``
+export const TaskCheckbox = styled(CheckBox)`
+`
 
 export const TaskTitle = styled.Text`
   color: #e1e1e1;
