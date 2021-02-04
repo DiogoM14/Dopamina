@@ -59,7 +59,6 @@ const TodoCard: React.FC = ({ navigation, route }) => {
                 id={id}
                 taskName={data.taskName}
               />
-              // <Text>{taskName}</Text>
             ))}
         </Tasks>
       </Wrapper>

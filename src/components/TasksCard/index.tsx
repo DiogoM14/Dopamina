@@ -12,7 +12,6 @@ interface CardProps {
 }
 
 const TasksCard: React.FC<CardProps> = ({ id, cardTitle, cardDescription, progressPerc, progressInt, enterTodoCard }) => {
-  console.log("CARD ID: " + id);
   return (
     <Container key={id}>
       <Card onPress={() => enterTodoCard( id, cardTitle )}>

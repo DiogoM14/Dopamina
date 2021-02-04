@@ -9,7 +9,6 @@ interface TaskProps {
 
 const Task: React.FC<TaskProps> = ({ id, taskName }) => {
   const [ isSelected, setIsSelected ] = useState(false)
-      console.log("CARD CONSOLE: " + taskName)
 
   return (
     <Container key={id} >
