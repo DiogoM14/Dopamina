@@ -25,20 +25,19 @@ const Landing: React.FC = ({ navigation }) => {
 
   useEffect(() => {
     const unsubscribe = db.collection('todoCard').onSnapshot(snapshot => (
-      setTodoCard(snapshot.docs.map(doc => ({
+      setTodoCard(snapshot.docs.map((doc) => ({
         id: doc.id,
         data: doc.data(),
       })))
     ))
-    console.log("consoleeeeee" + todoCard.data)
 
     return unsubscribe
   }, [])
-
+  
   const enterTodoCard = (id, cardName) => {
     navigation.navigate('TodoCard', { 
-      id,
-      cardName,
+      id : id,
+      cardName: cardName,
     })
   }
 
@@ -91,7 +90,7 @@ const Landing: React.FC = ({ navigation }) => {
           >
             {todoCard.map(({ id, data: { cardName, cardDescription } }) => (
               <TaskCard  
-                key={id}
+                id={id}
                 cardTitle={cardName}
                 cardDescription={cardDescription}
                 progressInt={0}

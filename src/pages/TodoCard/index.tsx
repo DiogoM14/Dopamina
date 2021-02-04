@@ -11,36 +11,39 @@ const TodoCard: React.FC = ({ navigation, route }) => {
   const [ tasks, setTasks ] = useState("")
   const [ tasksList, setTasksList ] = useState([])
 
+  
   const createTask = () => {
-     db.collection('todoCard').doc(route.params.id).collection('tasks').add({ 
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        taskName: tasks,
-        email: auth.currentUser.email,
-      })
-      .catch((err) => alert(err))
-
+    db.collection('todoCard').doc(route.params.id).collection('tasks').add({ 
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      taskName: tasks,
+      email: auth.currentUser.email,
+    })
+    .catch((err) => alert(err))
+    
+    setTasks('')
   }
-
+  
   useLayoutEffect(() => {
-    const unsubscribe = db.collection('todoCard')
-      .doc(route.params.id)
-      .collection('tasks')
-      .orderBy('timestamp', 'desc')
-      .onSnapshot((snapshot) => 
-        setTasksList(snapshot.docs.map((doc) => ({
+    const unsubscribe = db
+    .collection('todoCard')
+    .doc(route.params.id)
+    .collection('tasks')
+    .orderBy('timestamp', 'desc')
+    .onSnapshot((snapshot) => 
+    setTasksList(snapshot.docs.map((doc) => ({
           id: doc.id,
           data: doc.data(),
        })))
-    )
+       )
 
-    return unsubscribe
-  }, [route])
-
-  return (
-    <Container>
+       return unsubscribe
+      }, [route])
+      
+      return (
+        <Container>
       <Wrapper 
         showsVeticalScrollIndicator={false} 
-      >
+        >
           <Header>
             <Description>
               Workspace
@@ -53,8 +56,8 @@ const TodoCard: React.FC = ({ navigation, route }) => {
           {tasksList.map(({ id, data }) => (
             
               <Task 
-                key={id}
-                taskName={data.email}
+                id={id}
+                taskName={data.taskName}
               />
               // <Text>{taskName}</Text>
             ))}
