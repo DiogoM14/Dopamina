@@ -3,7 +3,7 @@ import 'firebase/firestore'
 import 'firebase/auth'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCLjU0_rQ1bB6gJI1UxU6jy4giqq3uuuZ8",
+  apiKey: process.env.API_KEY,
   authDomain: "dopamina-60293.firebaseapp.com",
   projectId: "dopamina-60293",
   storageBucket: "dopamina-60293.appspot.com",

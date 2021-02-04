@@ -19,12 +19,10 @@ const TodoCard: React.FC = ({ navigation, route }) => {
       })
       .catch((err) => alert(err))
 
-      setTasks('')
   }
 
   useLayoutEffect(() => {
-    const unsubscribe = db
-      .collection('todoCard')
+    const unsubscribe = db.collection('todoCard')
       .doc(route.params.id)
       .collection('tasks')
       .orderBy('timestamp', 'desc')
@@ -34,7 +32,7 @@ const TodoCard: React.FC = ({ navigation, route }) => {
           data: doc.data(),
        })))
     )
-    console.log("consoleeeeee" + tasksList.data)
+
     return unsubscribe
   }, [route])
 

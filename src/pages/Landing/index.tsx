@@ -30,6 +30,7 @@ const Landing: React.FC = ({ navigation }) => {
         data: doc.data(),
       })))
     ))
+    console.log("consoleeeeee" + todoCard.data)
 
     return unsubscribe
   }, [])
